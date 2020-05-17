@@ -11,6 +11,7 @@ export const itemWithID = (id) =>
         default: {
             x: 0,
             y: 0,
+            z: 1,
             width: 100,
             height: 100,
             color: '#efefef',
@@ -18,7 +19,10 @@ export const itemWithID = (id) =>
         },
     });
 
-export const backgroundColor = atom({
-    key: 'backgroundColor',
-    default: '#ffffff',
+export const settingsState = atom({
+    key: 'settings',
+    default: {
+        backgroundColor: '#ffffff',
+        color: '#000',
+    },
 });

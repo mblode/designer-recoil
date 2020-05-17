@@ -8,7 +8,7 @@ export default function Sidebar() {
     const canvasList = useRecoilValue(canvasListState);
 
     return (
-        <div class='sidebar'>
+        <div className='sidebar'>
             <CanvasItemCreator />
 
             {canvasList.map((canvasItem) => (

@@ -1,14 +1,12 @@
 import React from 'react';
 import { useRecoilState } from 'recoil';
 import { itemWithID } from '../Atoms';
+import Field from './Field';
 
 export default function PropertyItem({ id }) {
     const [item, setItem] = useRecoilState(itemWithID(id));
 
-    const onChange = (event) => {
-        const target = event.target;
-        const value = target.value;
-        const name = target.name;
+    const onChange = (name, value) => {
         setItem({
             ...item,
             [name]: value,
@@ -17,35 +15,13 @@ export default function PropertyItem({ id }) {
 
     return (
         <div className='property-item'>
-            <div className='form-group'>
-                <label htmlFor='x'>X Position</label>
-                <input className='form-control' name='x' type='number' value={item.x} onChange={onChange} />
-            </div>
-
-            <div className='form-group'>
-                <label htmlFor='y'>Y Position</label>
-                <input className='form-control' name='y' type='number' value={item.y} onChange={onChange} />
-            </div>
-
-            <div className='form-group'>
-                <label htmlFor='width'>Width</label>
-                <input className='form-control' name='width' type='number' value={item.width} onChange={onChange} />
-            </div>
-
-            <div className='form-group'>
-                <label htmlFor='height'>Height</label>
-                <input className='form-control' name='height' type='number' value={item.height} onChange={onChange} />
-            </div>
-
-            <div className='form-group'>
-                <label htmlFor='color'>Color</label>
-                <input className='form-control' name='color' type='color' value={item.color} onChange={onChange} />
-            </div>
-
-            <div className='form-group'>
-                <label htmlFor='label'>label</label>
-                <input className='form-control' name='label' type='text' value={item.label} onChange={onChange} />
-            </div>
+            <Field value={item.x} name='x' label='X position' type='number' onChange={onChange} />
+            <Field value={item.y} name='y' label='Y position' type='number' onChange={onChange} />
+            <Field value={item.z} name='z' label='Z-index' type='number' onChange={onChange} />
+            <Field value={item.width} name='width' label='Width' type='number' onChange={onChange} />
+            <Field value={item.height} name='height' label='Height' type='number' onChange={onChange} />
+            <Field value={item.color} name='color' label='Background color' type='color' onChange={onChange} />
+            <Field value={item.label} name='label' label='Text label' type='text' onChange={onChange} />
         </div>
     );
 }

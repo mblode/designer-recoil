@@ -15,11 +15,12 @@ export default function CanvasItem({ id }) {
             style={{
                 left: item.x + 'px',
                 top: item.y + 'px',
+                zIndex: item.z,
                 width: item.width + 'px',
                 height: item.height + 'px',
                 backgroundColor: item.color,
             }}>
-            <input className='form-control' type='text' value={item.text} onChange={onChange} />
+            <div>{item.label}</div>
         </div>
     );
 }
